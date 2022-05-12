@@ -1,23 +1,26 @@
 import fs from 'fs'
 import path from 'path'
 import nc from 'next-connect'
+import { UTF8 } from '../../constants'
+import { getAllScripts, toArray } from './utils'
 
 const handler = nc().post((req, res) => {
   const p = path.join('./scripts/react-intermediate/0-introduction.txt')
+
   const time = /\[(\d|:)+\]/
   const { searchTerm } = req.body
+  console.log('>>>>>>>>>>>> searchTerm', searchTerm)
+  const courses = getAllScripts(searchTerm)
+  console.log('>>>>>>>>>>>> courses', courses)
   const term = new RegExp(searchTerm, 'i')
   const result = {
     searchTerm: '',
     list: [],
   }
 
-  const toArray = str => {
-    return str.split(/\n/g).filter(s => s.length)
-  }
-
-  fs.readFile(p, 'utf-8', (err, data) => {
+  fs.readFile(p, UTF8, (err, data) => {
     if (err) {
+      console.error(err)
       return
     }
 
