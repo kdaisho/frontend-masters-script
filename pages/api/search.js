@@ -1,17 +1,14 @@
 import fs from 'fs'
 import path from 'path'
 import nc from 'next-connect'
-import { UTF8 } from '../../constants'
-import { getAllScripts, toArray } from './utils'
+import { UTF8 } from '../constants'
+import { getAllScripts, toArray } from '../utils'
 
 const handler = nc().post((req, res) => {
   const p = path.join('./scripts/react-intermediate/0-introduction.txt')
-
   const time = /\[(\d|:)+\]/
   const { searchTerm } = req.body
-  console.log('>>>>>>>>>>>> searchTerm', searchTerm)
-  const courses = getAllScripts(searchTerm)
-  console.log('>>>>>>>>>>>> courses', courses)
+
   const term = new RegExp(searchTerm, 'i')
   const result = {
     searchTerm: '',
@@ -44,8 +41,9 @@ const handler = nc().post((req, res) => {
       }
     }
 
-    console.log('End result', result)
-    res.status(200).json({ value: result.list })
+    const courses = getAllScripts(searchTerm)
+
+    res.status(200).json({ value: courses })
   })
 })
 

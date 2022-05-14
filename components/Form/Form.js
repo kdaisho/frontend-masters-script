@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Form = () => {
   const [value, setValue] = useState('')
@@ -10,7 +10,7 @@ const Form = () => {
   const handleSubmit = async event => {
     event.preventDefault()
     setValue('')
-    console.log('submit', value)
+
     const body = JSON.stringify({ searchTerm: value })
     const response = await fetch('./api/search', {
       method: 'POST',
@@ -20,9 +20,8 @@ const Form = () => {
       body,
     })
 
-    const j = await response.json()
-
-    console.log('PARSE', j)
+    const result = await response.json()
+    console.log('END RESULT', result)
   }
 
   return (

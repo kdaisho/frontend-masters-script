@@ -1,5 +1,13 @@
 import fs from 'fs'
-import { DS_STORE, UTF8 } from '../../constants'
+import { DS_STORE, UTF8 } from './constants'
+
+export const killJunkFile = filepath => {
+  try {
+    fs.unlinkSync('./scripts/' + filepath)
+  } catch (err) {
+    console.error('Failing to delete junk files:', err)
+  }
+}
 
 export const toArray = str => {
   return str.split(/\n/g).filter(s => s.length)
@@ -8,6 +16,10 @@ export const toArray = str => {
 export const getAllScripts = () => {
   const courseNames = fs.readdirSync('./scripts')
   const courseList = courseNames.reduce((courseMap, courseName) => {
+    if (courseName === DS_STORE) {
+      return courseMap
+    }
+
     const videoTitles = fs
       .readdirSync(`./scripts/${courseName}`)
       .filter(v => v !== DS_STORE)
@@ -20,7 +32,6 @@ export const getAllScripts = () => {
         title: filename,
         body: scriptArray,
       })
-
       return videoMap
     }, [])
 
