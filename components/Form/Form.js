@@ -1,29 +1,16 @@
 import React, { useState } from 'react'
 
-const Form = () => {
+const Form = ({ submit }) => {
   const [value, setValue] = useState('')
 
   const handleChange = ({ target }) => {
     setValue(target.value)
   }
 
-  const handleSubmit = async event => {
+  const handleSubmit = event => {
     event.preventDefault()
+    submit(value)
     setValue('')
-
-    const body = JSON.stringify({ searchTerm: value })
-    const response = await fetch('./api/search', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body,
-    })
-
-    const result = await response.json()
-    console.log('END RESULT', result)
-
-    // TODO: refresh after each query, consider using localStorage if you want to have some persistency
   }
 
   return (

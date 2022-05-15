@@ -1,8 +1,26 @@
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Form from '../components/Form'
+import SearchResult from '../components/SearchResult'
 import styles from '../styles/Home.module.css'
 
-export default function Homepage() {
+const Home = () => {
+  const [searchResult, setSearchResult] = useState({})
+
+  const submit = async value => {
+    const body = JSON.stringify({ searchTerm: value })
+    const response = await fetch('./api/search', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body,
+    })
+
+    const result = await response.json()
+    console.log('END RESULT', result)
+    setSearchResult(result)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +31,8 @@ export default function Homepage() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Frontend Masters Script</h1>
-        <Form />
+        <Form submit={submit} />
+        <SearchResult searchResult={searchResult} />
       </main>
 
       <footer className={styles.footer}>
@@ -23,3 +42,5 @@ export default function Homepage() {
     </div>
   )
 }
+
+export default Home

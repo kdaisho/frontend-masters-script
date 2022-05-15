@@ -8,10 +8,10 @@ const handler = nc().post((req, res) => {
 
   const courses = buildSearchResult(ctx, {
     searchRegex,
-    courses: new Set(),
+    courses: [],
   })
 
-  res.status(200).json({ search, courses: Array.from(courses) })
+  res.status(200).json({ search, courses: courses })
 })
 
 export default handler
