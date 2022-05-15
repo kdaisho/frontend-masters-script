@@ -10,17 +10,12 @@ const handler = nc().post((req, res) => {
     list: [],
   }
 
-  const ctxArray = Object.keys(ctx)
-
-  for (let i = 0; i < ctxArray.length; i++) {
-    const sessionArray = Object.keys(ctx[ctxArray[i]])
-    for (let j = 0; j < sessionArray.length; j++) {
-      const timeFrameArray = Object.keys(ctx[ctxArray[i]][sessionArray[j]])
-      for (let k = 0; k < timeFrameArray.length; k++) {
-        const text = ctx[ctxArray[i]][sessionArray[j]][timeFrameArray[k]]
-        if (text.search(searchRegex) >= 0) {
+  for (const course in ctx) {
+    for (const session in ctx[course]) {
+      for (const [key, value] of Object.entries(ctx[course][session])) {
+        if (value.search(searchRegex) >= 0) {
           result.search = search
-          result.list.push(timeFrameArray[k])
+          result.list.push(key)
         }
       }
     }
