@@ -1,35 +1,32 @@
-import fs from 'fs'
-import { DS_STORE, SCRIPTS } from '../constants'
+const fs = require('fs')
+const { DS_STORE, SCRIPTS } = require('./constants')
 
-export const killJunkFile = filepath => {
+const killJunkFile = filepath => {
   try {
-    fs.unlinkSync('./scripts/' + filepath)
+    fs.unlinkSync(`./${SCRIPTS}/` + filepath)
+    console.log('✅ clean up')
   } catch (err) {
-    console.error('Failing to delete junk files:', err)
+    console.error(`🆘 Failed to delete ${DS_STORE}:`, err)
   }
 }
 
-export const cleanUp = (found = false) => {
+const cleanUp = () => {
   if (fs.readdirSync(`./${SCRIPTS}`).includes(DS_STORE)) {
     killJunkFile(DS_STORE)
-    found = true
   }
 
   for (const folder of fs.readdirSync(`./${SCRIPTS}`)) {
     if (fs.readdirSync(`./${SCRIPTS}/${folder}`).includes(DS_STORE)) {
       killJunkFile(`${folder}/${DS_STORE}`)
-      found = true
     }
   }
-
-  return found
 }
 
-export const toArray = str => {
+const toArray = str => {
   return str.split(/\n/g).filter(s => s.length)
 }
 
-export const buildScript = () => {
+const buildScript = () => {
   const courses = fs.readdirSync(`./${SCRIPTS}/`)
   const timeFrame = /\[(\d|:)+\]/
   const ctx = {}
@@ -58,8 +55,12 @@ export const buildScript = () => {
   }
 
   try {
-    fs.writeFileSync('./script.json', JSON.stringify(ctx, null, 2))
+    fs.writeFileSync(`./${SCRIPTS}.json`, JSON.stringify(ctx, null, 2))
+    console.log('✅ build script')
   } catch (err) {
-    console.error(err)
+    console.error(`🆘 Failed to build ${SCRIPTS}:`, err)
   }
 }
+
+cleanUp()
+buildScript()

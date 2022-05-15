@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Form from '../components/Form'
 import styles from '../styles/Home.module.css'
-import { buildScript, cleanUp } from '../lib/utils'
 
-export default function Homepage({ found }) {
+export default function Homepage() {
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +13,6 @@ export default function Homepage({ found }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Frontend Masters Script</h1>
-        {found && <p>.DS_Store file(s) found, successfully deleted.</p>}
         <Form />
       </main>
 
@@ -24,11 +22,4 @@ export default function Homepage({ found }) {
       </footer>
     </div>
   )
-}
-
-Homepage.getInitialProps = () => {
-  const found = cleanUp(false)
-  buildScript()
-
-  return { found }
 }

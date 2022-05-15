@@ -1,5 +1,5 @@
 import nc from 'next-connect'
-import ctx from '../../script.json'
+import ctx from '../../scripts.json'
 
 const handler = nc().post((req, res) => {
   const search = req.body.searchTerm
