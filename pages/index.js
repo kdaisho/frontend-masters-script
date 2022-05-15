@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Form from '../components/Form'
 import styles from '../styles/Home.module.css'
-import fs from 'fs'
-import { DS_STORE } from './constants'
-import { killJunkFile } from './utils'
+import { buildScript, cleanUp } from '../lib/utils'
 
 export default function Homepage({ found }) {
   return (
@@ -29,19 +27,8 @@ export default function Homepage({ found }) {
 }
 
 Homepage.getInitialProps = () => {
-  let found = false
-
-  if (fs.readdirSync('./scripts').includes(DS_STORE)) {
-    killJunkFile(DS_STORE)
-    found = true
-  }
-
-  for (const folder of fs.readdirSync('./scripts')) {
-    if (fs.readdirSync(`./scripts/${folder}`).includes(DS_STORE)) {
-      killJunkFile(`${folder}/${DS_STORE}`)
-      found = true
-    }
-  }
+  const found = cleanUp(false)
+  buildScript()
 
   return { found }
 }

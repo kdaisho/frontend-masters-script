@@ -33,3 +33,4 @@ yarn-error.log*
 
 # Frontend masters scripts
 scripts/
+script.json

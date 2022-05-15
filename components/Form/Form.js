@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
   const [value, setValue] = useState('')
@@ -22,6 +22,8 @@ const Form = () => {
 
     const result = await response.json()
     console.log('END RESULT', result)
+
+    // TODO: refresh after each query, consider using localStorage if you want to have some persistency
   }
 
   return (
