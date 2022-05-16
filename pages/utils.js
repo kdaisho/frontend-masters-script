@@ -1,27 +1,30 @@
 export const buildSearchResult = (ctx, { searchRegex, courses }) => {
-  for (const course in ctx) {
-    const eachCourse = {
-      sessions: [],
-    }
-    eachCourse.name = course
+  for (let i = 0; i < ctx.length; i++) {
+    const each = {}
+    each.sessions = []
 
-    for (const session in ctx[course]) {
+    for (let j = 0; j < ctx[i].sessions.length; j++) {
       const time = []
+      let title = ''
 
-      for (const [key, value] of Object.entries(ctx[course][session])) {
-        if (value.search(searchRegex) >= 0) {
-          time.push(key)
-
-          eachCourse.sessions.push({
-            title: session,
-            time,
-          })
+      for (let k = 0; k < ctx[i].sessions[j].timeFrames.length; k++) {
+        if (ctx[i].sessions[j].timeFrames[k].text.search(searchRegex) >= 0) {
+          time.push(ctx[i].sessions[j].timeFrames[k].time)
+          title = ctx[i].sessions[j].sessionTitle
         }
+      }
+
+      if (title.length) {
+        each.sessions.push({
+          sessionTitle: title,
+          timeFrames: time,
+        })
       }
     }
 
-    if (eachCourse.sessions.length) {
-      courses.push(eachCourse)
+    if (each.sessions.length) {
+      each.courseName = ctx[i].courseName
+      courses.push(each)
     }
   }
 
