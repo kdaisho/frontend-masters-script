@@ -22,36 +22,50 @@ const cleanUp = () => {
   }
 }
 
+const timeRegex = /\[(\d|:)+\]/
+
 const toArray = str => {
-  return str.split(/\n/g).filter(s => s.length)
+  const obj = {}
+  return str
+    .split(/\n/g)
+    .map(s => {
+      if (s.match(timeRegex)) {
+        obj.time = s
+      } else {
+        obj.text = s
+        return { ...obj }
+      }
+    })
+    .filter(o => o?.text.length)
 }
 
 const buildScript = () => {
   const courses = fs.readdirSync(`./${SCRIPTS}/`)
-  const timeFrame = /\[(\d|:)+\]/
-  const ctx = {}
+  const ctx = []
 
   for (const course of courses) {
-    ctx[course] = {}
-    const sessions = fs.readdirSync(`./${SCRIPTS}/${course}`)
+    const _course = {}
+    _course.courseName = course
+    _course.sessions = []
+    const listSessions = fs.readdirSync(`./${SCRIPTS}/${course}`)
 
-    for (const session of sessions) {
+    for (const session of listSessions) {
+      const _eachSession = {}
+      _eachSession.sessionTitle = session
+      _eachSession.timeFrames = []
+
       const text = fs
         .readFileSync(`./${SCRIPTS}/${course}/${session}`)
         .toString()
 
-      let key
-      const script = toArray(text).reduce((acc, cur) => {
-        if (cur.match(timeFrame)) {
-          key = cur
-        } else {
-          acc[key] = cur
-        }
+      for (const each of toArray(text)) {
+        _eachSession.timeFrames.push(each)
+      }
 
-        return acc
-      }, {})
-      ctx[course][session] = script
+      _course.sessions.push(_eachSession)
     }
+
+    ctx.push(_course)
   }
 
   try {
