@@ -8,17 +8,17 @@ const SearchResult = ({ result }) =>
       <ul className='flex flex-col gap-10'>
         {Array.isArray(result.courses) &&
           result.courses.map(course => (
-            <li key={course.courseName} className='flex flex-col gap-2'>
+            <li key={course.name} className='flex flex-col gap-2'>
               <h3 className='capitalize'>
-                Course: {course.courseName.replace(/-/g, ' ')}
+                Course: {course.name.replace(/-/g, ' ')}
               </h3>
               <p className='ml-4'>Sessions</p>
               <ul className='flex flex-col gap-4 ml-6'>
                 {course.sessions.map(session => {
                   return (
-                    <li key={session.sessionTitle} className='ml-4'>
+                    <li key={session.name} className='ml-4'>
                       <h3 className='capitalize'>
-                        {session.sessionTitle.replace(/-/g, ' ')}
+                        {session.name.replace(/-/g, ' ')}
                       </h3>
                       <ul className='ml-4'>
                         {session.timeFrames.map(time => (

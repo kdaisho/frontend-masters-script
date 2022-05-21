@@ -47,13 +47,13 @@ const buildScript = () => {
 
   for (const course of courses) {
     const _course = {}
-    _course.courseName = course
+    _course.name = course
     _course.sessions = []
     const listSessions = fs.readdirSync(`./${SCRIPTS}/${course}`)
 
     for (const session of listSessions) {
       const _eachSession = {}
-      _eachSession.sessionTitle = session.replace(/\.txt$/, '')
+      _eachSession.name = session.replace(/\.txt$/, '')
       _eachSession.timeFrames = []
 
       const text = fs
@@ -68,7 +68,7 @@ const buildScript = () => {
     }
 
     _course.sessions.sort((a, b) => {
-      return +getNum(a.sessionTitle) - +getNum(b.sessionTitle)
+      return +getNum(a.name) - +getNum(b.name)
     })
 
     ctx.push(_course)

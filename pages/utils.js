@@ -10,20 +10,20 @@ export const buildSearchResult = (ctx, { searchRegex, courses }) => {
       for (let k = 0; k < ctx[i].sessions[j].timeFrames.length; k++) {
         if (ctx[i].sessions[j].timeFrames[k].text.search(searchRegex) >= 0) {
           time.push(ctx[i].sessions[j].timeFrames[k].time)
-          title = ctx[i].sessions[j].sessionTitle
+          title = ctx[i].sessions[j].name
         }
       }
 
       if (title.length) {
         each.sessions.push({
-          sessionTitle: title,
+          name: title,
           timeFrames: time,
         })
       }
     }
 
     if (each.sessions.length) {
-      each.courseName = ctx[i].courseName
+      each.name = ctx[i].name
       courses.push(each)
     }
   }

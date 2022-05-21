@@ -1,9 +1,9 @@
 [
   {
-    "courseName": "devtools",
+    "name": "devtools",
     "sessions": [
       {
-        "sessionTitle": "0-introduction",
+        "name": "0-introduction",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -84,7 +84,7 @@
         ]
       },
       {
-        "sessionTitle": "1-devtools-history",
+        "name": "1-devtools-history",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -173,7 +173,7 @@
         ]
       },
       {
-        "sessionTitle": "2-elements-network-panels",
+        "name": "2-elements-network-panels",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -350,7 +350,7 @@
         ]
       },
       {
-        "sessionTitle": "3-performance-console-security-panels",
+        "name": "3-performance-console-security-panels",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -423,7 +423,7 @@
         ]
       },
       {
-        "sessionTitle": "4-sources-application-memory-panels",
+        "name": "4-sources-application-memory-panels",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -468,7 +468,7 @@
         ]
       },
       {
-        "sessionTitle": "5-lighthouse-device-emulation-element-finder",
+        "name": "5-lighthouse-device-emulation-element-finder",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -529,7 +529,7 @@
         ]
       },
       {
-        "sessionTitle": "6-quick-edits-css-html-scroll-into-view",
+        "name": "6-quick-edits-css-html-scroll-into-view",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -614,7 +614,7 @@
         ]
       },
       {
-        "sessionTitle": "7-quick-edits-computed-styles-specificity",
+        "name": "7-quick-edits-computed-styles-specificity",
         "timeFrames": [
           {
             "time": "[00:00:02]",
@@ -695,7 +695,7 @@
         ]
       },
       {
-        "sessionTitle": "8-quick-edits-html-breakpoints-themes-accessibility",
+        "name": "8-quick-edits-html-breakpoints-themes-accessibility",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -824,7 +824,7 @@
         ]
       },
       {
-        "sessionTitle": "9-quick-edits-exercise",
+        "name": "9-quick-edits-exercise",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -845,7 +845,7 @@
         ]
       },
       {
-        "sessionTitle": "10-quick-edits-solution",
+        "name": "10-quick-edits-solution",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -910,7 +910,7 @@
         ]
       },
       {
-        "sessionTitle": "11-workspaces",
+        "name": "11-workspaces",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -987,7 +987,7 @@
         ]
       },
       {
-        "sessionTitle": "12-workspaces-exercise",
+        "name": "12-workspaces-exercise",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1052,7 +1052,7 @@
         ]
       },
       {
-        "sessionTitle": "13-workspaces-solution",
+        "name": "13-workspaces-solution",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1101,7 +1101,7 @@
         ]
       },
       {
-        "sessionTitle": "14-step-through-debugging",
+        "name": "14-step-through-debugging",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1322,7 +1322,7 @@
         ]
       },
       {
-        "sessionTitle": "15-step-through-debugging-exercise",
+        "name": "15-step-through-debugging-exercise",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1351,7 +1351,7 @@
         ]
       },
       {
-        "sessionTitle": "16-step-through-debugging-solution-and-q-a",
+        "name": "16-step-through-debugging-solution-and-q-a",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1464,7 +1464,7 @@
         ]
       },
       {
-        "sessionTitle": "17-network-performance-network-waterfall",
+        "name": "17-network-performance-network-waterfall",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1665,7 +1665,7 @@
         ]
       },
       {
-        "sessionTitle": "18-network-performance-q-a",
+        "name": "18-network-performance-q-a",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1802,7 +1802,7 @@
         ]
       },
       {
-        "sessionTitle": "19-measuring-real-user-performance",
+        "name": "19-measuring-real-user-performance",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -1883,7 +1883,7 @@
         ]
       },
       {
-        "sessionTitle": "20-on-page-performance",
+        "name": "20-on-page-performance",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2024,7 +2024,7 @@
         ]
       },
       {
-        "sessionTitle": "21-performance-panel-page-jank-tips",
+        "name": "21-performance-panel-page-jank-tips",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2141,7 +2141,7 @@
         ]
       },
       {
-        "sessionTitle": "22-layout-thrashing-exercise",
+        "name": "22-layout-thrashing-exercise",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2194,7 +2194,7 @@
         ]
       },
       {
-        "sessionTitle": "23-layout-thrashing-solution",
+        "name": "23-layout-thrashing-solution",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2311,7 +2311,7 @@
         ]
       },
       {
-        "sessionTitle": "24-running-node-js",
+        "name": "24-running-node-js",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2360,7 +2360,7 @@
         ]
       },
       {
-        "sessionTitle": "25-memory-leaks-memory-heap-snapshots",
+        "name": "25-memory-leaks-memory-heap-snapshots",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2557,7 +2557,7 @@
         ]
       },
       {
-        "sessionTitle": "26-what-can-slow-down-a-website",
+        "name": "26-what-can-slow-down-a-website",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2662,7 +2662,7 @@
         ]
       },
       {
-        "sessionTitle": "27-simulating-network-conditions",
+        "name": "27-simulating-network-conditions",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2695,7 +2695,7 @@
         ]
       },
       {
-        "sessionTitle": "28-lighthouse-audits",
+        "name": "28-lighthouse-audits",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2804,7 +2804,7 @@
         ]
       },
       {
-        "sessionTitle": "29-wrapping-up",
+        "name": "29-wrapping-up",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2919,10 +2919,10 @@
     ]
   },
   {
-    "courseName": "react-intermediate",
+    "name": "react-intermediate",
     "sessions": [
       {
-        "sessionTitle": "0-introduction",
+        "name": "0-introduction",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -2967,7 +2967,7 @@
         ]
       },
       {
-        "sessionTitle": "1-declaration-merging",
+        "name": "1-declaration-merging",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3084,7 +3084,7 @@
         ]
       },
       {
-        "sessionTitle": "2-modules-cjs-setup",
+        "name": "2-modules-cjs-setup",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3197,7 +3197,7 @@
         ]
       },
       {
-        "sessionTitle": "3-type-queries",
+        "name": "3-type-queries",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3286,7 +3286,7 @@
         ]
       },
       {
-        "sessionTitle": "4-conditional-types",
+        "name": "4-conditional-types",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3339,7 +3339,7 @@
         ]
       },
       {
-        "sessionTitle": "5-conditional-types-practice",
+        "name": "5-conditional-types-practice",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3432,7 +3432,7 @@
         ]
       },
       {
-        "sessionTitle": "6-extract-exclude",
+        "name": "6-extract-exclude",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3521,7 +3521,7 @@
         ]
       },
       {
-        "sessionTitle": "7-type-q-a",
+        "name": "7-type-q-a",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3586,7 +3586,7 @@
         ]
       },
       {
-        "sessionTitle": "8-inference-with-conditional-types",
+        "name": "8-inference-with-conditional-types",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3775,7 +3775,7 @@
         ]
       },
       {
-        "sessionTitle": "9-inference-q-a",
+        "name": "9-inference-q-a",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3824,7 +3824,7 @@
         ]
       },
       {
-        "sessionTitle": "10-indexed-access-types",
+        "name": "10-indexed-access-types",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3861,7 +3861,7 @@
         ]
       },
       {
-        "sessionTitle": "11-mapped-types",
+        "name": "11-mapped-types",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -3998,7 +3998,7 @@
         ]
       },
       {
-        "sessionTitle": "12-advanced-mapped-types",
+        "name": "12-advanced-mapped-types",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -4123,7 +4123,7 @@
         ]
       },
       {
-        "sessionTitle": "13-pick-mapping-modifiers",
+        "name": "13-pick-mapping-modifiers",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -4176,7 +4176,7 @@
         ]
       },
       {
-        "sessionTitle": "14-template-literal-types-key-mapping",
+        "name": "14-template-literal-types-key-mapping",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -4249,7 +4249,7 @@
         ]
       },
       {
-        "sessionTitle": "15-filtering-out-properties",
+        "name": "15-filtering-out-properties",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -4438,7 +4438,7 @@
         ]
       },
       {
-        "sessionTitle": "16-typing-a-data-layer",
+        "name": "16-typing-a-data-layer",
         "timeFrames": [
           {
             "time": "[00:00:00]",
@@ -4583,7 +4583,7 @@
         ]
       },
       {
-        "sessionTitle": "17-wrapping-up",
+        "name": "17-wrapping-up",
         "timeFrames": [
           {
             "time": "[00:00:00]",
