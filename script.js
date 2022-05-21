@@ -39,6 +39,8 @@ const toArray = str => {
     .filter(o => o?.text.length)
 }
 
+const getNum = str => str.match(/^(\d)+/)[0]
+
 const buildScript = () => {
   const courses = fs.readdirSync(`./${SCRIPTS}/`)
   const ctx = []
@@ -51,7 +53,7 @@ const buildScript = () => {
 
     for (const session of listSessions) {
       const _eachSession = {}
-      _eachSession.sessionTitle = session
+      _eachSession.sessionTitle = session.replace(/\.txt$/, '')
       _eachSession.timeFrames = []
 
       const text = fs
@@ -64,6 +66,10 @@ const buildScript = () => {
 
       _course.sessions.push(_eachSession)
     }
+
+    _course.sessions.sort((a, b) => {
+      return +getNum(a.sessionTitle) - +getNum(b.sessionTitle)
+    })
 
     ctx.push(_course)
   }
