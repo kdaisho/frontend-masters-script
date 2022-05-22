@@ -20,6 +20,7 @@ const Home = () => {
 
     setSearchResult(await response.json())
   }
+
   return (
     <div className='container mx-auto flex flex-col justify-between h-screen text-gray-600 text-lg'>
       <Head>
@@ -34,7 +35,7 @@ const Home = () => {
         <button
           className='bg-green-500 text-white py-2 px-6 rounded-md disabled:opacity-50'
           onClick={() => setTextHidden(b => !b)}
-          disabled={isEmpty(searchResult)}
+          disabled={isEmpty(searchResult.courses)}
         >
           {textHidden ? 'Show text' : 'Hide text'}
         </button>
