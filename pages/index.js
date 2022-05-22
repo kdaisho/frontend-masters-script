@@ -6,6 +6,7 @@ import isEmpty from 'lodash/isEmpty'
 
 const Home = () => {
   const [searchResult, setSearchResult] = useState({})
+  const [sessionsHidden, setSessionsHidden] = useState(false)
   const [textHidden, setTextHidden] = useState(false)
 
   const submit = async value => {
@@ -17,7 +18,6 @@ const Home = () => {
       },
       body,
     })
-
     setSearchResult(await response.json())
   }
 
@@ -32,14 +32,27 @@ const Home = () => {
       <main className='flex flex-col gap-10'>
         <h1 className='text-5xl font-bold'>Frontend Masters Script</h1>
         <Form submit={submit} />
-        <button
-          className='bg-green-500 text-white py-2 px-6 rounded-md disabled:opacity-50'
-          onClick={() => setTextHidden(b => !b)}
-          disabled={isEmpty(searchResult.courses)}
-        >
-          {textHidden ? 'Show text' : 'Hide text'}
-        </button>
-        <SearchResult result={searchResult} textHidden={textHidden} />
+        <div className='flex gap-2'>
+          <button
+            className='bg-green-500 text-white py-2 px-6 rounded-md disabled:opacity-50 w-full'
+            onClick={() => setSessionsHidden(s => !s)}
+            disabled={isEmpty(searchResult.courses)}
+          >
+            {sessionsHidden ? 'Show sessions' : 'Hide sessions'}
+          </button>
+          <button
+            className='bg-green-500 text-white py-2 px-6 rounded-md disabled:opacity-50 w-full'
+            onClick={() => setTextHidden(b => !b)}
+            disabled={isEmpty(searchResult.courses) || sessionsHidden}
+          >
+            {textHidden ? 'Show text' : 'Hide text'}
+          </button>
+        </div>
+        <SearchResult
+          result={searchResult}
+          sessionsHidden={sessionsHidden}
+          textHidden={textHidden}
+        />
       </main>
 
       <footer>

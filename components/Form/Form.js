@@ -20,7 +20,7 @@ const Form = ({ submit }) => {
   }
 
   return (
-    <form className='w-96 flex flex-col gap-4' onSubmit={handleSubmit}>
+    <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
       <h2 className='text-2xl'>Search courses</h2>
       <label>
         Search Keyword
