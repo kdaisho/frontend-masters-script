@@ -1,6 +1,7 @@
 import React from 'react'
+import { highlight } from '../../pages/utils'
 
-const SearchResult = ({ result }) =>
+const SearchResult = ({ result, textHidden }) =>
   result && (
     <section className='flex flex-col gap-4'>
       <h2 className='text-2xl'>Search Result</h2>
@@ -21,8 +22,19 @@ const SearchResult = ({ result }) =>
                         {session.name.replace(/-/g, ' ')}
                       </h3>
                       <ul className='ml-4'>
-                        {session.timeFrames.map(time => (
-                          <li key={time}>{time}</li>
+                        {session.timeFrames.map((frame, i) => (
+                          <li
+                            key={`${frame.name}-${i}`}
+                            className='flex flex-col py-2'
+                          >
+                            <span>{frame.name}</span>
+                            <span
+                              className={textHidden ? 'hidden' : ''}
+                              dangerouslySetInnerHTML={{
+                                __html: highlight(result.search, frame.text),
+                              }}
+                            ></span>
+                          </li>
                         ))}
                       </ul>
                     </li>

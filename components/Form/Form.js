@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
+import isEmpty from 'lodash/isEmpty'
 
 const Form = ({ submit }) => {
   const [value, setValue] = useState('')
@@ -33,7 +34,10 @@ const Form = ({ submit }) => {
           ref={inputEl}
         />
       </label>
-      <button className='bg-sky-500/100 text-white py-2 px-6 rounded-md'>
+      <button
+        className='bg-sky-500/100 text-white py-2 px-6 rounded-md disabled:opacity-50'
+        disabled={isEmpty(value)}
+      >
         Search
       </button>
     </form>

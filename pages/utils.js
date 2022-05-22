@@ -1,3 +1,22 @@
+export const highlight = (keyword, str) => {
+  const regex = RegExp(keyword, 'gi')
+  let first = 0
+  let last = 0
+  let highlighted = ''
+  let matchArray = ''
+
+  while ((matchArray = regex.exec(str)) !== null) {
+    last = matchArray.index
+    highlighted += str.substring(first, last)
+    highlighted += `<span class='bg-yellow-200'>${matchArray[0]}</span>`
+    first = regex.lastIndex
+  }
+
+  highlighted += str.substring(first, str.length)
+
+  return highlighted
+}
+
 export const buildSearchResult = (ctx, { searchRegex, courses }) => {
   for (let i = 0; i < ctx.length; i++) {
     const each = {}
@@ -9,7 +28,11 @@ export const buildSearchResult = (ctx, { searchRegex, courses }) => {
 
       for (let k = 0; k < ctx[i].sessions[j].timeFrames.length; k++) {
         if (ctx[i].sessions[j].timeFrames[k].text.search(searchRegex) >= 0) {
-          time.push(ctx[i].sessions[j].timeFrames[k].time)
+          const frame = {
+            name: ctx[i].sessions[j].timeFrames[k].time,
+            text: ctx[i].sessions[j].timeFrames[k].text,
+          }
+          time.push(frame)
           title = ctx[i].sessions[j].name
         }
       }

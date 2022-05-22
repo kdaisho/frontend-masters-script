@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import Head from 'next/head'
 import Form from '../components/Form'
 import SearchResult from '../components/SearchResult'
+import isEmpty from 'lodash/isEmpty'
 
 const Home = () => {
   const [searchResult, setSearchResult] = useState({})
+  const [textHidden, setTextHidden] = useState(false)
 
   const submit = async value => {
     const body = JSON.stringify({ searchTerm: value })
@@ -16,9 +18,7 @@ const Home = () => {
       body,
     })
 
-    const result = await response.json()
-    console.log('END RESULT', result)
-    setSearchResult(result)
+    setSearchResult(await response.json())
   }
   return (
     <div className='container mx-auto flex flex-col justify-between h-screen text-gray-600 text-lg'>
@@ -31,7 +31,14 @@ const Home = () => {
       <main className='flex flex-col gap-10'>
         <h1 className='text-5xl font-bold'>Frontend Masters Script</h1>
         <Form submit={submit} />
-        <SearchResult result={searchResult} />
+        <button
+          className='bg-green-500 text-white py-2 px-6 rounded-md disabled:opacity-50'
+          onClick={() => setTextHidden(b => !b)}
+          disabled={isEmpty(searchResult)}
+        >
+          {textHidden ? 'Show text' : 'Hide text'}
+        </button>
+        <SearchResult result={searchResult} textHidden={textHidden} />
       </main>
 
       <footer>
