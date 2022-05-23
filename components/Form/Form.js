@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react'
 import isEmpty from 'lodash/isEmpty'
 
-const Form = ({ submit }) => {
+const Form = ({ submit, history }) => {
   const [value, setValue] = useState('')
   const inputEl = useRef(null)
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     inputEl.current.focus()
@@ -13,10 +14,21 @@ const Form = ({ submit }) => {
     setValue(target.value)
   }
 
+  const handleKeyUp = ({ key }) => {
+    if (key === 'ArrowUp' && history.length) {
+      setCount(c => c + 1)
+      const calc = count % history.length
+      const index = calc <= -1 ? history.length : calc
+
+      setValue([...history].reverse()[index].search)
+    }
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
     submit(value)
     setValue('')
+    setCount(0)
   }
 
   return (
@@ -31,6 +43,7 @@ const Form = ({ submit }) => {
           value={value}
           name='search'
           onChange={handleChange}
+          onKeyUp={handleKeyUp}
           ref={inputEl}
         />
       </label>

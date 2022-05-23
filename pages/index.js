@@ -8,6 +8,7 @@ const Home = () => {
   const [searchResult, setSearchResult] = useState({})
   const [sessionsHidden, setSessionsHidden] = useState(false)
   const [textHidden, setTextHidden] = useState(false)
+  const [history, setHistory] = useState([])
 
   const submit = async value => {
     const body = JSON.stringify({ searchTerm: value })
@@ -18,7 +19,13 @@ const Home = () => {
       },
       body,
     })
-    setSearchResult(await response.json())
+
+    const result = await response.json()
+    setSearchResult(result)
+
+    if (!history.some(h => h.search === result.search)) {
+      setHistory([...history, result])
+    }
   }
 
   return (
@@ -31,7 +38,7 @@ const Home = () => {
 
       <main className='flex flex-col gap-10'>
         <h1 className='text-5xl font-bold'>Frontend Masters Script</h1>
-        <Form submit={submit} />
+        <Form submit={submit} history={history} />
         <div className='flex gap-2'>
           <button
             className='bg-green-500 text-white py-2 px-6 rounded-md disabled:opacity-50 w-full'
