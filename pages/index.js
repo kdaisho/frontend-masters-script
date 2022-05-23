@@ -22,7 +22,7 @@ const Home = () => {
   }
 
   return (
-    <div className='container mx-auto flex flex-col justify-between h-screen text-gray-600 text-lg'>
+    <div className='container mx-auto flex flex-col justify-between h-screen text-gray-600 text-lg py-6'>
       <Head>
         <title>Frontend masters script</title>
         <meta name='description' content='Find courses from Frontend masters' />
@@ -48,14 +48,16 @@ const Home = () => {
             {textHidden ? 'Show text' : 'Hide text'}
           </button>
         </div>
-        <SearchResult
-          result={searchResult}
-          sessionsHidden={sessionsHidden}
-          textHidden={textHidden}
-        />
+        {!isEmpty(searchResult.courses) && (
+          <SearchResult
+            result={searchResult}
+            sessionsHidden={sessionsHidden}
+            textHidden={textHidden}
+          />
+        )}
       </main>
 
-      <footer>
+      <footer className='h-20 py-4'>
         Created by <span>daishodesign.com</span>
       </footer>
     </div>

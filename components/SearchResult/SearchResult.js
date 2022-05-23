@@ -4,7 +4,6 @@ import { highlight } from '../../pages/utils'
 const SearchResult = ({ result, sessionsHidden, textHidden }) =>
   result && (
     <section className='flex flex-col gap-4'>
-      <h2 className='text-2xl'>Search Result</h2>
       <p>Keyword: {result.search}</p>
       <ul className='flex flex-col gap-4'>
         {Array.isArray(result.courses) &&
