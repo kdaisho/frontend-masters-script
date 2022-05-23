@@ -16,11 +16,9 @@ const Form = ({ submit, history }) => {
 
   const handleKeyUp = ({ key }) => {
     if (key === 'ArrowUp' && history.length) {
-      setCount(c => c + 1)
-      const calc = count % history.length
-      const index = calc <= -1 ? history.length : calc
-
+      const index = count % history.length
       setValue([...history].reverse()[index].search)
+      setCount(c => c + 1)
     }
   }
 
