@@ -8,7 +8,7 @@ export const highlight = (keyword, str) => {
   while ((matchArray = regex.exec(str)) !== null) {
     last = matchArray.index
     highlighted += str.substring(first, last)
-    highlighted += `<span class='bg-yellow-200'>${matchArray[0]}</span>`
+    highlighted += `<span class='bg-yellow-300'>${matchArray[0]}</span>`
     first = regex.lastIndex
   }
 

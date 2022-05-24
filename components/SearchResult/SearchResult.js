@@ -4,21 +4,22 @@ import { highlight } from '../../pages/utils'
 const SearchResult = ({ result, sessionsHidden, textHidden }) =>
   result && (
     <section className='flex flex-col gap-4'>
-      <p>Keyword: {result.search}</p>
+      <p className='text-2xl py-6'>
+        Keyword: <span className='text-5xl px-4'>{result.search}</span>
+      </p>
       <ul className='flex flex-col gap-4'>
         {Array.isArray(result.courses) &&
           result.courses.map(course => (
             <li key={course.name} className='flex flex-col gap-2'>
-              <h3 className='capitalize'>
-                Course: {course.name.replace(/-/g, ' ')}
+              <h3 className='capitalize text-2xl font-semibold'>
+                {course.name.replace(/-/g, ' ')}
               </h3>
               <span className={sessionsHidden ? 'hidden' : ''}>
-                <p className='ml-4'>Sessions</p>
-                <ul className='flex flex-col gap-4 ml-6'>
+                <ul className='flex flex-col gap-4 ml-4'>
                   {course.sessions.map(session => {
                     return (
                       <li key={session.name} className='ml-4'>
-                        <h3 className='capitalize'>
+                        <h3 className='capitalize text-xl font-semibold'>
                           {session.name.replace(/-/g, ' ')}
                         </h3>
                         <ul className='ml-4'>
@@ -27,7 +28,9 @@ const SearchResult = ({ result, sessionsHidden, textHidden }) =>
                               key={`${frame.name}-${i}`}
                               className='flex flex-col py-2'
                             >
-                              <span>{frame.name}</span>
+                              <span className='font-semibold'>
+                                {frame.name}
+                              </span>
                               <span
                                 className={textHidden ? 'hidden' : ''}
                                 dangerouslySetInnerHTML={{
